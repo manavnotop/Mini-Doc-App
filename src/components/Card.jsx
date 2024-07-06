@@ -2,10 +2,11 @@ import React from 'react'
 import { FaRegFileAlt } from 'react-icons/fa'
 import { LuDownload } from 'react-icons/lu'
 import { IoClose } from 'react-icons/io5'
+import { motion } from 'framer-motion'
 
-function Card({data}) {
+function Card({data, reference}) {
   return (
-    <div className='relative flex-shrink-0 w-60 h-72 bg-zinc-900/90 rounded-[45px] text-white px-8 py-10 overflow-hidden'>
+    <motion.div drag dragConstraints={reference} whileDrag={{scale: 1.1}} dragElastic={0.2} dragTransition={{bounceStiffness:200, bounceDamping:10}} className='relative flex-shrink-0 w-60 h-72 bg-zinc-900/90 rounded-[45px] text-white px-8 py-10 overflow-hidden'>
         <FaRegFileAlt />
         <p className='mt-5 text-sm leading-tight font-semibold font-sans'>
             {data.desc}
@@ -27,7 +28,7 @@ function Card({data}) {
                 )
             }
         </div>
-    </div>
+    </motion.div>
   )
 }
 
